@@ -10,8 +10,8 @@
 	let { title, description, children }: Props = $props();
 </script>
 
-<div class="bg-white rounded-2xl border border-gray-200 shadow-sm p-6">
-	<h2 class="text-xl font-semibold text-gray-800 mb-1">{title}</h2>
-	<p class="text-sm text-gray-500 mb-6">{description}</p>
+<div class="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
+	<h2 class="mb-1 text-xl font-semibold text-gray-800">{title}</h2>
+	<p class="mb-6 text-sm text-gray-500">{description}</p>
 	{@render children()}
 </div>

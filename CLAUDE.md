@@ -9,6 +9,7 @@ Always use [Conventional Commits](https://www.conventionalcommits.org/) format:
 **Types:** `feat`, `fix`, `chore`, `docs`, `style`, `refactor`, `test`, `perf`
 
 **Examples:**
+
 - `feat(theme): add dark/light mode toggle`
 - `fix(calc): handle division by zero in percentage change`
 - `chore(deps): update tailwindcss to v4`
