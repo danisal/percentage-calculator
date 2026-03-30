@@ -60,4 +60,3 @@ Commits must follow [Conventional Commits](https://www.conventionalcommits.org/)
 ```
 
 Types: `feat`, `fix`, `chore`, `docs`, `style`, `refactor`, `test`, `perf`
-
