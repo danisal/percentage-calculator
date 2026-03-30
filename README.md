@@ -1,42 +1,63 @@
-# sv
+# Percentage Calculator
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+A simple, fast percentage calculator built with Svelte 5 and SvelteKit. Supports three calculation modes, dark/light theme, and works on mobile.
 
-## Creating a project
+Inspired by [percentagecalculator.net](https://percentagecalculator.net/).
 
-If you're seeing this, you've probably already done this step. Congrats!
+## Features
 
-```sh
-# create a new project
-npx sv create my-app
-```
+- **% of a number** — e.g. what is 20% of 250?
+- **What percent?** — e.g. 50 is what percent of 200?
+- **% change** — e.g. what is the percentage change from 100 to 150?
+- Dark / light theme toggle, synced with system preference
+- Responsive, mobile-friendly layout
 
-To recreate this project with the same configuration:
+## Stack
 
-```sh
-# recreate this project
-pnpm dlx sv@0.13.0 create --template minimal --types ts --add prettier eslint vitest="usages:unit" tailwindcss="plugins:typography" mcp="ide:claude-code+setup:remote" --install pnpm percentage-calculator
-```
+- [Svelte 5](https://svelte.dev) + [SvelteKit](https://kit.svelte.dev)
+- [Tailwind CSS v4](https://tailwindcss.com)
+- TypeScript
+- Vitest
 
 ## Developing
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+Install dependencies:
 
 ```sh
-npm run dev
+pnpm install
+```
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
+Start the development server:
+
+```sh
+pnpm dev
+```
+
+## Testing
+
+```sh
+pnpm test
 ```
 
 ## Building
 
-To create a production version of your app:
-
 ```sh
-npm run build
+pnpm build
 ```
 
-You can preview the production build with `npm run preview`.
+Preview the production build:
 
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+```sh
+pnpm preview
+```
+
+## Contributing
+
+Commits must follow [Conventional Commits](https://www.conventionalcommits.org/):
+
+```
+<type>(<scope>): <description>
+```
+
+Types: `feat`, `fix`, `chore`, `docs`, `style`, `refactor`, `test`, `perf`
+
