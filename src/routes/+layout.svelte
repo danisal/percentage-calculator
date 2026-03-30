@@ -13,6 +13,8 @@
 	<title>{i18n.t.app.title}</title>
 	<meta name="description" content={i18n.t.app.description} />
 	<meta name="author" content="Daniel Salvado" />
+	<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#09090b" />
+	<meta name="theme-color" media="(prefers-color-scheme: light)" content="#f5f5f4" />
 	<meta property="og:title" content={i18n.t.app.title} />
 	<meta property="og:description" content={i18n.t.app.description} />
 	<meta property="og:type" content="website" />

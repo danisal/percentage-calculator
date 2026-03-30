@@ -20,7 +20,11 @@
 	let isDark = $state(systemDark);
 
 	$effect(() => {
+		const color = isDark ? '#09090b' : '#f5f5f4';
 		document.documentElement.classList.toggle('dark', isDark);
+		document.querySelectorAll('meta[name="theme-color"]').forEach(el => {
+			el.setAttribute('content', color);
+		});
 
 		const mq = window.matchMedia('(prefers-color-scheme: dark)');
 		const onChange = (e: MediaQueryListEvent) => { isDark = e.matches; };
