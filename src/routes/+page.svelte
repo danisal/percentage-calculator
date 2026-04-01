@@ -101,7 +101,7 @@
 			</div>
 		</div>
 
-		<div class="overflow-hidden rounded-2xl bg-stone-50 dark:bg-zinc-800">
+		<div class="overflow-hidden rounded-2xl border border-stone-200 bg-stone-50 dark:border-zinc-700/50 dark:bg-zinc-800">
 			<div role="tablist" class="flex border-b border-stone-200 dark:border-zinc-700">
 				{#each tabs as tab, i (tab.id)}
 					<button
