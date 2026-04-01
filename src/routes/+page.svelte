@@ -57,19 +57,19 @@
 			<div class="ml-auto flex items-center gap-2">
 				<button
 					onclick={i18n.toggle}
-					class="flex h-11 w-11 items-center justify-center rounded-xl bg-stone-200 text-xs font-bold text-zinc-500 transition-colors hover:text-zinc-700 dark:bg-zinc-800 dark:text-zinc-400 dark:hover:text-zinc-200"
+					class="flex h-11 w-11 items-center justify-center rounded-xl bg-stone-200 text-xs font-bold text-zinc-500 transition-colors hover:text-zinc-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-500 dark:bg-zinc-800 dark:text-zinc-400 dark:hover:text-zinc-200 dark:focus-visible:ring-zinc-400"
 					aria-label={i18n.t.toggleLanguage}
 				>
 					{i18n.t.toggleLanguage}
 				</button>
 				<button
 					onclick={toggleTheme}
-					class="flex h-11 w-11 items-center justify-center rounded-xl bg-stone-200 text-zinc-500 transition-colors hover:text-zinc-700 dark:bg-zinc-800 dark:text-zinc-400 dark:hover:text-zinc-200"
+					class="flex h-11 w-11 items-center justify-center rounded-xl bg-stone-200 text-zinc-500 transition-colors hover:text-zinc-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-500 dark:bg-zinc-800 dark:text-zinc-400 dark:hover:text-zinc-200 dark:focus-visible:ring-zinc-400"
 					aria-label="Toggle theme"
 				>
 					{#if isDark}
-						<!-- Sun icon -->
 						<svg
+							aria-hidden="true"
 							xmlns="http://www.w3.org/2000/svg"
 							width="17"
 							height="17"
@@ -86,8 +86,8 @@
 							/>
 						</svg>
 					{:else}
-						<!-- Moon icon -->
 						<svg
+							aria-hidden="true"
 							xmlns="http://www.w3.org/2000/svg"
 							width="17"
 							height="17"
@@ -112,11 +112,12 @@
 						role="tab"
 						aria-selected={activeTab === tab.id}
 						aria-controls="tab-panel"
-						class="flex-1 px-4 py-4 text-sm font-medium transition-colors {i < tabs.length - 1
+						tabindex={activeTab === tab.id ? 0 : -1}
+						class="flex-1 px-4 py-4 text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-zinc-500 dark:focus-visible:ring-zinc-400 {i < tabs.length - 1
 							? 'border-r border-stone-200 dark:border-zinc-700'
 							: ''} {activeTab === tab.id
-							? 'text-zinc-900 dark:text-white'
-							: 'text-zinc-500 hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-zinc-200'}"
+							? 'font-semibold text-zinc-900 dark:text-white'
+							: 'font-medium text-zinc-500 hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-zinc-200'}"
 						onclick={() => (activeTab = tab.id)}
 					>
 						{tab.label}
