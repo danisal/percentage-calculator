@@ -14,7 +14,9 @@
 
 <div>
 	<div class="mb-5 rounded-xl bg-stone-200 px-4 py-3 dark:bg-zinc-900">
-		<code class="font-mono text-sm text-zinc-600 dark:text-zinc-300">{i18n.t.percentOfNumber.formula}</code>
+		<code class="font-mono text-sm text-zinc-600 dark:text-zinc-300"
+			>{i18n.t.percentOfNumber.formula}</code
+		>
 	</div>
 
 	<label
@@ -57,7 +59,9 @@
 	/>
 
 	<div class="mt-5 rounded-xl bg-stone-200 px-5 py-4 dark:bg-zinc-900">
-		<p class="mb-2 text-xs font-semibold tracking-widest text-zinc-600 dark:text-zinc-400">{i18n.t.result}</p>
+		<p class="mb-2 text-xs font-semibold tracking-widest text-zinc-600 dark:text-zinc-400">
+			{i18n.t.result}
+		</p>
 		<p class="text-4xl font-bold text-zinc-900 dark:text-white">
 			{result !== null ? formatResult(result) : '—'}
 		</p>
