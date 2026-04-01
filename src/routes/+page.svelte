@@ -20,13 +20,17 @@
 
 	let isDark = $state(systemDark);
 
+	// Syncs isDark → DOM class and theme-color meta tags. Runs on every toggle.
 	$effect(() => {
 		const color = isDark ? '#09090b' : '#f5f5f4';
 		document.documentElement.classList.toggle('dark', isDark);
 		document.querySelectorAll('meta[name="theme-color"]').forEach((el) => {
 			el.setAttribute('content', color);
 		});
+	});
 
+	// Tracks OS-level preference changes. Runs once on mount.
+	$effect(() => {
 		const mq = window.matchMedia('(prefers-color-scheme: dark)');
 		const onChange = (e: MediaQueryListEvent) => {
 			isDark = e.matches;
