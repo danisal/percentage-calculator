@@ -44,6 +44,7 @@
 	<div class="mx-auto max-w-xl">
 		<div class="mb-6 flex items-center gap-3">
 			<div
+				aria-hidden="true"
 				class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-zinc-800 text-lg font-bold text-white"
 			>
 				%
@@ -101,9 +102,12 @@
 		</div>
 
 		<div class="overflow-hidden rounded-2xl bg-stone-50 dark:bg-zinc-800">
-			<div class="flex border-b border-stone-200 dark:border-zinc-700">
+			<div role="tablist" class="flex border-b border-stone-200 dark:border-zinc-700">
 				{#each tabs as tab, i (tab.id)}
 					<button
+						role="tab"
+						aria-selected={activeTab === tab.id}
+						aria-controls="tab-panel"
 						class="flex-1 px-4 py-4 text-sm font-medium transition-colors {i < tabs.length - 1
 							? 'border-r border-stone-200 dark:border-zinc-700'
 							: ''} {activeTab === tab.id
@@ -116,7 +120,7 @@
 				{/each}
 			</div>
 
-			<div class="p-6 pt-5">
+			<div id="tab-panel" role="tabpanel" class="p-6 pt-5">
 				{#if activeTab === 'of'}
 					<PercentageOfNumber />
 				{:else if activeTab === 'between'}
@@ -129,7 +133,7 @@
 	</div>
 
 	<footer
-		class="mx-auto mt-6 flex max-w-xl flex-col gap-1 text-xs text-zinc-500 sm:flex-row sm:justify-between dark:text-zinc-600"
+		class="mx-auto mt-6 flex max-w-xl flex-col gap-1 text-xs text-zinc-500 sm:flex-row sm:justify-between dark:text-zinc-500"
 	>
 		<a
 			href="https://danielsalvado.com"
