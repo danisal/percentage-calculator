@@ -53,14 +53,14 @@
 			<div class="ml-auto flex items-center gap-2">
 				<button
 					onclick={i18n.toggle}
-					class="flex h-9 w-9 items-center justify-center rounded-xl bg-stone-200 text-xs font-bold text-zinc-500 transition-colors hover:text-zinc-700 dark:bg-zinc-800 dark:text-zinc-400 dark:hover:text-zinc-200"
+					class="flex h-11 w-11 items-center justify-center rounded-xl bg-stone-200 text-xs font-bold text-zinc-500 transition-colors hover:text-zinc-700 dark:bg-zinc-800 dark:text-zinc-400 dark:hover:text-zinc-200"
 					aria-label={i18n.t.toggleLanguage}
 				>
 					{i18n.t.toggleLanguage}
 				</button>
 				<button
 					onclick={toggleTheme}
-					class="flex h-9 w-9 items-center justify-center rounded-xl bg-stone-200 text-zinc-500 transition-colors hover:text-zinc-700 dark:bg-zinc-800 dark:text-zinc-400 dark:hover:text-zinc-200"
+					class="flex h-11 w-11 items-center justify-center rounded-xl bg-stone-200 text-zinc-500 transition-colors hover:text-zinc-700 dark:bg-zinc-800 dark:text-zinc-400 dark:hover:text-zinc-200"
 					aria-label="Toggle theme"
 				>
 					{#if isDark}
