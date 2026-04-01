@@ -20,13 +20,17 @@
 
 	let isDark = $state(systemDark);
 
+	// Syncs isDark → DOM class and theme-color meta tags. Runs on every toggle.
 	$effect(() => {
 		const color = isDark ? '#09090b' : '#f5f5f4';
 		document.documentElement.classList.toggle('dark', isDark);
 		document.querySelectorAll('meta[name="theme-color"]').forEach((el) => {
 			el.setAttribute('content', color);
 		});
+	});
 
+	// Tracks OS-level preference changes. Runs once on mount.
+	$effect(() => {
 		const mq = window.matchMedia('(prefers-color-scheme: dark)');
 		const onChange = (e: MediaQueryListEvent) => {
 			isDark = e.matches;
@@ -44,6 +48,7 @@
 	<div class="mx-auto max-w-xl">
 		<div class="mb-6 flex items-center gap-3">
 			<div
+				aria-hidden="true"
 				class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-zinc-800 text-lg font-bold text-white"
 			>
 				%
@@ -52,19 +57,19 @@
 			<div class="ml-auto flex items-center gap-2">
 				<button
 					onclick={i18n.toggle}
-					class="flex h-9 w-9 items-center justify-center rounded-xl bg-stone-200 text-xs font-bold text-zinc-500 transition-colors hover:text-zinc-700 dark:bg-zinc-800 dark:text-zinc-400 dark:hover:text-zinc-200"
+					class="flex h-11 w-11 items-center justify-center rounded-xl bg-stone-200 text-xs font-bold text-zinc-500 transition-colors hover:text-zinc-700 focus-visible:ring-2 focus-visible:ring-zinc-500 focus-visible:outline-none dark:bg-zinc-800 dark:text-zinc-400 dark:hover:text-zinc-200 dark:focus-visible:ring-zinc-400"
 					aria-label={i18n.t.toggleLanguage}
 				>
 					{i18n.t.toggleLanguage}
 				</button>
 				<button
 					onclick={toggleTheme}
-					class="flex h-9 w-9 items-center justify-center rounded-xl bg-stone-200 text-zinc-500 transition-colors hover:text-zinc-700 dark:bg-zinc-800 dark:text-zinc-400 dark:hover:text-zinc-200"
+					class="flex h-11 w-11 items-center justify-center rounded-xl bg-stone-200 text-zinc-500 transition-colors hover:text-zinc-700 focus-visible:ring-2 focus-visible:ring-zinc-500 focus-visible:outline-none dark:bg-zinc-800 dark:text-zinc-400 dark:hover:text-zinc-200 dark:focus-visible:ring-zinc-400"
 					aria-label="Toggle theme"
 				>
 					{#if isDark}
-						<!-- Sun icon -->
 						<svg
+							aria-hidden="true"
 							xmlns="http://www.w3.org/2000/svg"
 							width="17"
 							height="17"
@@ -81,8 +86,8 @@
 							/>
 						</svg>
 					{:else}
-						<!-- Moon icon -->
 						<svg
+							aria-hidden="true"
 							xmlns="http://www.w3.org/2000/svg"
 							width="17"
 							height="17"
@@ -100,15 +105,22 @@
 			</div>
 		</div>
 
-		<div class="overflow-hidden rounded-2xl bg-stone-50 dark:bg-zinc-800">
-			<div class="flex border-b border-stone-200 dark:border-zinc-700">
+		<div
+			class="overflow-hidden rounded-2xl border border-stone-200 bg-stone-50 dark:border-zinc-700/50 dark:bg-zinc-800"
+		>
+			<div role="tablist" class="flex border-b border-stone-200 dark:border-zinc-700">
 				{#each tabs as tab, i (tab.id)}
 					<button
-						class="flex-1 px-4 py-4 text-sm font-medium transition-colors {i < tabs.length - 1
+						role="tab"
+						aria-selected={activeTab === tab.id}
+						aria-controls="tab-panel"
+						tabindex={activeTab === tab.id ? 0 : -1}
+						class="flex-1 px-4 py-4 text-sm transition-colors focus-visible:ring-2 focus-visible:ring-zinc-500 focus-visible:outline-none focus-visible:ring-inset dark:focus-visible:ring-zinc-400 {i <
+						tabs.length - 1
 							? 'border-r border-stone-200 dark:border-zinc-700'
 							: ''} {activeTab === tab.id
-							? 'text-zinc-900 dark:text-white'
-							: 'text-zinc-500 hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-zinc-200'}"
+							? 'font-semibold text-zinc-900 dark:text-white'
+							: 'font-medium text-zinc-500 hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-zinc-200'}"
 						onclick={() => (activeTab = tab.id)}
 					>
 						{tab.label}
@@ -116,7 +128,7 @@
 				{/each}
 			</div>
 
-			<div class="p-6 pt-5">
+			<div id="tab-panel" role="tabpanel" class="p-6 pt-5">
 				{#if activeTab === 'of'}
 					<PercentageOfNumber />
 				{:else if activeTab === 'between'}
@@ -129,7 +141,7 @@
 	</div>
 
 	<footer
-		class="mx-auto mt-6 flex max-w-xl flex-col gap-1 text-xs text-zinc-500 sm:flex-row sm:justify-between dark:text-zinc-600"
+		class="mx-auto mt-6 flex max-w-xl flex-col gap-1 text-xs text-zinc-500 sm:flex-row sm:justify-between dark:text-zinc-500"
 	>
 		<a
 			href="https://danielsalvado.com"
