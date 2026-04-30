@@ -2,6 +2,7 @@
 	import './layout.css';
 	import favicon from '$lib/assets/favicon.svg';
 	import { i18n } from '$lib/i18n';
+	import { page } from '$app/state';
 
 	let { children } = $props();
 </script>
@@ -18,8 +19,11 @@
 	<meta property="og:title" content={i18n.t.app.title} />
 	<meta property="og:description" content={i18n.t.app.description} />
 	<meta property="og:type" content="website" />
-	<meta name="twitter:card" content="summary" />
+	<meta property="og:url" content={page.url.href} />
+	<meta property="og:image" content="{page.url.origin}/og-image.svg" />
+	<meta name="twitter:card" content="summary_large_image" />
 	<meta name="twitter:title" content={i18n.t.app.title} />
 	<meta name="twitter:description" content={i18n.t.app.description} />
+	<meta name="twitter:image" content="{page.url.origin}/og-image.svg" />
 </svelte:head>
 {@render children()}

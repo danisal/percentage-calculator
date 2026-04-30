@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#09090b"/>
+      <stop offset="100%" stop-color="#18181b"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <!-- Large decorative % (right side, subtle) -->
+  <text x="980" y="540" font-family="system-ui, -apple-system, sans-serif" font-size="520" font-weight="900" fill="#27272a" text-anchor="middle">%</text>
+
+  <!-- Logo icon -->
+  <rect x="80" y="130" width="80" height="80" rx="16" fill="#27272a"/>
+  <text x="120" y="192" font-family="system-ui, -apple-system, sans-serif" font-size="50" font-weight="700" fill="white" text-anchor="middle">%</text>
+
+  <!-- Title -->
+  <text x="80" y="320" font-family="system-ui, -apple-system, sans-serif" font-size="84" font-weight="700" fill="white">Percentage</text>
+  <text x="80" y="420" font-family="system-ui, -apple-system, sans-serif" font-size="84" font-weight="700" fill="white">Calculator</text>
+
+  <!-- Description -->
+  <text x="80" y="495" font-family="system-ui, -apple-system, sans-serif" font-size="30" fill="#71717a">Simple, fast percentage calculations</text>
+</svg>
