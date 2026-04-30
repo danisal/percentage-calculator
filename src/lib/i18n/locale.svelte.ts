@@ -1,11 +1,11 @@
+import { browser } from '$app/environment';
 import en from './en.js';
 import pt from './pt.js';
 
 export type Locale = 'pt' | 'en';
 
 function createI18n() {
-	const stored =
-		typeof localStorage !== 'undefined' ? (localStorage.getItem('lang') as Locale) : null;
+	const stored = browser ? (localStorage.getItem('lang') as Locale) : null;
 	let locale = $state<Locale>(stored ?? 'pt');
 
 	return {
@@ -17,7 +17,7 @@ function createI18n() {
 		},
 		toggle() {
 			locale = locale === 'pt' ? 'en' : 'pt';
-			if (typeof localStorage !== 'undefined') localStorage.setItem('lang', locale);
+			if (browser) localStorage.setItem('lang', locale);
 		}
 	};
 }
